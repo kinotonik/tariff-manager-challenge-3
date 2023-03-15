@@ -16,7 +16,7 @@ public class Tariff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+
     private Long id;
 
     private String name;
@@ -27,5 +27,10 @@ public class Tariff {
             joinColumns = @JoinColumn(name = "tariff_id"),
             inverseJoinColumns = @JoinColumn(name = "options_id"))
     private Set<Option> possibleOptions = new LinkedHashSet<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
 }
